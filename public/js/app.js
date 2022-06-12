@@ -3,7 +3,7 @@ const Searched = document.querySelector('input')
 const messageOne = document.querySelector('#msgOne')
 const messageTwo = document.querySelector('#msgTwo')
 
-// messageOne.textContent= 'From js'
+
 
 
 
