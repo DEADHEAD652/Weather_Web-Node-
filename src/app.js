@@ -22,7 +22,7 @@ app.use(express.static(publicDirectoryPath))
 app.get('', (req, res) => {
     res.render('index', {
         title: 'Weather',
-        name: 'hamza'
+        name: 'Hamza'
     })
 })
 
@@ -37,51 +37,40 @@ app.get('/help', (req, res) => {
     res.render('help', {
         helpText: 'This is some helpful text.',
         title: 'Help',
-        name: 'hamza'
+        name: 'Hamza'
     })
 })
 
 app.get('/weather', (req, res) => {
     if (!req.query.address) {
         return res.send({
-            error: 'No address provided!'
+            error: 'You must provide an address!'
         })
-
     }
 
-    geocode(req.query.address, (error, {
-        latitude,
-        longitude,
-        location
-    } = {}) => {
+    geocode(req.query.address, (error, { latitude, longitude, location } = {}) => {
         if (error) {
-            res.send({
-                error
-            })
+            return res.send({ error })
         }
+
         forecast(latitude, longitude, (error, forecastData) => {
             if (error) {
-                return res.send({
-                    error
-                })
+                return res.send({ error })
             }
+
             res.send({
                 forecast: forecastData,
                 location,
                 address: req.query.address
             })
         })
-
     })
-
-
 })
 
 app.get('/products', (req, res) => {
     if (!req.query.search) {
-
         return res.send({
-            error: "you must provide a search term"
+            error: 'You must provide a search term'
         })
     }
 
@@ -89,27 +78,24 @@ app.get('/products', (req, res) => {
     res.send({
         products: []
     })
-
 })
-
-
 
 app.get('/help/*', (req, res) => {
     res.render('404', {
-        title: 404,
-        name: 'hamza',
-        ERROR_404: 'File  not found'
+        title: '404',
+        name: 'Hamza',
+        errorMessage: 'Help article not found.'
     })
 })
 
 app.get('*', (req, res) => {
     res.render('404', {
-        title: 404,
-        name: 'hamza',
-        ERROR_404: 'Page not found'
+        title: '404',
+        name: 'Hamza',
+        errorMessage: 'Page not found.'
     })
 })
 
-app.listen(3000, () => {
+app.listen(4000, () => {
     console.log('Server is up on port 3000.')
 })
