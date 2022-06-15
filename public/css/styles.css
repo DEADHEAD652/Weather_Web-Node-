@@ -1,13 +1,15 @@
 body {
     color: #333333;
-    font-family: arial;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     max-width: 650px;
     margin: 0 auto;
     padding: 0 16px;
+    text-align: center;
 
     display: flex;
     flex-direction: column;
-    min-height: 100vh
+    min-height: 100vh;
+    background-color: whitesmoke;
 }
 
 .main-content {
@@ -28,7 +30,7 @@ header {
 
 h1 {
     font-size: 64px;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 
 header a {
@@ -37,13 +39,14 @@ header a {
     text-decoration: none;
 }
 
-.portrait {
-    width: 250px;
+form{
+    margin-top: 30px;
 }
-
 input {
-    border: 1px solid #cccccc;
+    border: 2px solid #cccccc;
     padding: 8px;
+    border-radius: 4px;
+
 }
 
 button {
@@ -52,4 +55,5 @@ button {
     background: #888888;
     color: white;
     padding: 8px;
+    border-radius: 2px;
 }
